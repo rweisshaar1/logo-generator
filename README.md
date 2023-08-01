@@ -12,10 +12,11 @@
 ## Starter-Code:
 - I was given the code for the circle, which is located in the assests folder.
 
-## Screen Recording of Working Application:
-<video src='../logo-generator/screen-recording/screen-recording-logo.mov' width=500/>
-
-
-
 ## Link to GitHub Repo:
 https://github.com/rweisshaar1/logo-generator
+
+## Test:
+- I created a test file to test the shape class constructors. To run the test (after the initial npm i), type "npm run test", and it will run the test file.
+
+## Screen Recording of Working Application:
+<video src='../logo-generator/screen-recording/screen-recording-logo.mov' width=500/>
