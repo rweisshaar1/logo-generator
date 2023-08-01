@@ -98,9 +98,10 @@ class Circle {
     this.textCol = textCol ;
   }
   svgBuilder() {
-  return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> 
-  <circle cx="150" cy="100" r="80" ${this.shapeCol} />
-  <text x="150" y="125" font-size="60" text-anchor="middle" ${this.textCol}>${this.texts}</text>
+  return `
+<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> 
+<circle cx="150" cy="100" r="80" ${this.shapeCol} />
+<text x="150" y="125" font-size="60" text-anchor="middle" ${this.textCol}>${this.texts}</text>
 </svg>`
   }
 }
@@ -112,9 +113,10 @@ class Square {
     this.textCol = textCol ;
   }
   svgBuilder() {
-  return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> 
-  <rect x="75" y="65" width="150" height="150" ${this.shapeCol} />
-  <text x="150" y="125" font-size="60" text-anchor="middle" ${this.textCol}>${this.texts}</text>
+  return `
+<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> 
+<rect x="75" y="65" width="150" height="150" ${this.shapeCol} />
+<text x="150" y="125" font-size="60" text-anchor="middle" ${this.textCol}>${this.texts}</text>
 </svg>`
   }
 }
@@ -126,9 +128,10 @@ class Triangle {
     this.textCol = textCol ;
   }
   svgBuilder() {
-  return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> 
-  <polygon points="50,50 150,50 100,150" ${this.shapeCol} />
-  <text x="150" y="125" font-size="60" text-anchor="middle" ${this.textCol}>${this.texts}</text>
+  return `
+<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> 
+<polygon points="50,50 150,50 100,150" ${this.shapeCol} />
+<text x="150" y="125" font-size="60" text-anchor="middle" ${this.textCol}>${this.texts}</text>
 </svg>`
   }
 }
@@ -139,6 +142,8 @@ function writeFile (data) {
   console.log("Generated logo.svg")
 }
 
-// module.exports = {createLogo, text, textColor, shapeFunc, shapeColor}
+
+module.exports = {Square, Triangle, Circle}
+
 
 start()
