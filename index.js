@@ -47,7 +47,6 @@ function text (response) {
 
   if (response.length <= 3){
     characterInput = response 
-    console.log(characterInput);
 
   } else if (response.length >= 4 ) {
     console.log("Please Enter no more than 3 Characters") ;
@@ -64,7 +63,6 @@ function textColor (response) {
     start()
   } else {
     textCol = `fill= "${response}"`
-    console.log(textCol);
   }
 }
 
@@ -87,7 +85,6 @@ function shapeColor (response) {
     start()
   } else {
     shapeCol = `fill="${response}"`
-    console.log(shapeCol);
   }
 }
 
@@ -138,8 +135,7 @@ class Triangle {
 
 function writeFile (data) {
   fs.writeFile(`logo.svg`, data,(err)=>
-  err ? console.error(err) : console.log('File Write Success!'))
-  console.log("Generated logo.svg")
+  err ? console.error(err) : console.log("Generated logo.svg"))
 }
 
 
