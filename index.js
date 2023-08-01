@@ -4,10 +4,7 @@ const inquirer = require('inquirer');
 
 let textCol = ``;
 let characterInput = ``;
-let shapeInput = ``;
 let shapeCol = `` ;
-
-let svg = ``;
 
 function start (){
 inquirer 
@@ -41,12 +38,9 @@ inquirer
 function createLogo (response) {
   text(response.characters);
   textColor(response.characterColor);
-  shapeFunc(response.shape);
   shapeColor(response.shapeColor) ;
-  
-  svgBuilder()
+  shapeFunc(response.shape);
 
-  writeFile(svg);
 }
 
 function text (response) {
@@ -76,14 +70,14 @@ function textColor (response) {
 
 function shapeFunc (response) {
   if (response === 'Circle') {
-    shapeInput = `<circle cx="150" cy="100" r="80"`
-    console.log(shapeInput);
+    const newCircle = new Circle (shapeCol, characterInput, textCol) ;
+    writeFile( newCircle.svgBuilder() );
   } else if (response === 'Square') {
-    shapeInput = `<rect x="50" y="20" width="150" height="150"`
-    console.log(shapeInput) ;
+    const newSquare = new Square (shapeCol, characterInput, textCol)
+    writeFile( newSquare.svgBuilder() );
   } else if ( response === 'Triangle') {
-    shapeInput = `<polygon points="0,0 100,0 50,100"`
-    console.log(shapeInput)
+    const newTriangle = new Triangle (shapeCol, characterInput, textCol)
+    writeFile( newTriangle.svgBuilder() );
   }
 }
 
@@ -97,15 +91,46 @@ function shapeColor (response) {
   }
 }
 
-function svgBuilder () {
-  svg = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> 
-
-  ${shapeInput} ${shapeCol} />
-
-  <text x="150" y="125" font-size="60" text-anchor="middle" ${textCol}>${characterInput}</text>
-
+class Circle {
+  constructor(shapeCol, texts, textCol){
+    this.shapeCol = shapeCol ;
+    this.texts = texts;
+    this.textCol = textCol ;
+  }
+  svgBuilder() {
+  return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> 
+  <circle cx="150" cy="100" r="80" ${this.shapeCol} />
+  <text x="150" y="125" font-size="60" text-anchor="middle" ${this.textCol}>${this.texts}</text>
 </svg>`
-  console.log(svg)
+  }
+}
+
+class Square {
+  constructor(shapeCol, texts, textCol){
+    this.shapeCol = shapeCol ;
+    this.texts = texts;
+    this.textCol = textCol ;
+  }
+  svgBuilder() {
+  return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> 
+  <rect x="75" y="65" width="150" height="150" ${this.shapeCol} />
+  <text x="150" y="125" font-size="60" text-anchor="middle" ${this.textCol}>${this.texts}</text>
+</svg>`
+  }
+}
+
+class Triangle {
+  constructor(shapeCol, texts, textCol){
+    this.shapeCol = shapeCol ;
+    this.texts = texts;
+    this.textCol = textCol ;
+  }
+  svgBuilder() {
+  return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> 
+  <polygon points="50,50 150,50 100,150" ${this.shapeCol} />
+  <text x="150" y="125" font-size="60" text-anchor="middle" ${this.textCol}>${this.texts}</text>
+</svg>`
+  }
 }
 
 function writeFile (data) {
@@ -113,5 +138,7 @@ function writeFile (data) {
   err ? console.error(err) : console.log('File Write Success!'))
   console.log("Generated logo.svg")
 }
+
+// module.exports = {createLogo, text, textColor, shapeFunc, shapeColor}
 
 start()
